@@ -4,43 +4,59 @@
   <meta charset="UTF-8">
   <title>掲示板アプリ</title>
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-  <%# <link rel="stylesheet" href="/assets/css/count.css"> %>
+  <link rel="stylesheet" href="/assets/css/count.css">
 </head>
 <body>
-  <form action="/new" method="post" enctype="multipart/form-data">
-    <p>名前: <input type="text" name="user_name"></p>
-    <p>本文: <input type="text" name="body"></p>
-    <p><input type="file" name="file"></p>
-    <input type="submit" value="投稿">
-  </form>
+  <header>
+    <h1 class="text-center text-muted mg-10 text-dark">掲示板アプリ</h1>
+  </header>
 
+<div class="container">
+  <form action="/new" method="post" enctype="multipart/form-data">
+    <p>名前 : <input type="text" name="user_name" class="NAME"></p>
+    <textarea name="body" cols="43" rows="5" class=""></textarea>
+  <div class="flex1">
+    <p><input type="file" name="file" class="btn"></p>
+    <input type="submit" value="投稿" class="btn bg-info contribution">
+    </div>
+  </form>
+<hr>
   <ul>
   <% @contents.each do |content| %>
-    <li>
-      <p><%= content.name %></p>
-      <p><%= content.body %></p>
+  <div class="sentence">
+      <p class="ContName">名前 : <%= content.name %></p>
+      <p class="ContText">本文<br><%= content.body %></p>
       <% unless content.img.empty? %>
-      <p><img src="<%= content.img %>" alt="投稿写真"></p>
+      <p class="image">
+        <img src="<%= content.img %>" alt="投稿写真">
+      </p>
       <% end %>
-      <span><%= content.good %></span>
+      <div class="flex2">
       <span>
         <form action="/good/<%= content.id %>" method="post">
-          <input type="submit" value="いいね">
+          <input type="submit" value="<%= content.good %>" class="btn bg-danger">
 
-        </form>
-      </span>
-      <span>
-        <form action="/delete/<%= content.id %>" method="post">
-          <input type="submit" value="削除">
         </form>
       </span>
       <span>
         <form action="/edit/<%= content.id %>" method="post">
-          <input type="submit" value="編集">
+          <input type="submit" value="編集" class="btn bg-warning">
         </form>
       </span>
-    </li>
+      <span>
+        <form action="/delete/<%= content.id %>" method="post">
+          <input type="submit" value="削除" class="btn bg-warning">
+        </form>
+      </span>
+
+      </div>
+    </div>
  <% end %>
   </ul>
+   </div>
+
+   <footer>
+      <p>@lassieena 2019/04</p>
+   </footer>
 </body>
 </html>
