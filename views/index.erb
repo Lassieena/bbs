@@ -2,13 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>掲示板アプリ</title>
+  <title>シンプル掲示板</title>
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/css/count.css">
+  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1 class="text-center text-muted mg-10 text-dark">掲示板アプリ</h1>
+    <h1 class="text-center text-muted mg-10 text-dark">シンプル掲示板</h1>
   </header>
 
 <div class="container">
@@ -24,8 +25,8 @@
   <ul>
   <% @contents.each do |content| %>
   <div class="sentence">
-      <p class="ContName">名前 : <%= content.name %></p>
-      <p class="ContText">本文<br><%= content.body %></p>
+      <p class="ContName"><b>名前 : </b><%= content.name %></p>
+      <p class="ContText"><b>本文</b><br><%= content.body %></p>
       <% unless content.img.empty? %>
       <p class="image">
         <img src="<%= content.img %>" alt="投稿写真">
@@ -34,7 +35,7 @@
       <div class="flex2">
       <span>
         <form action="/good/<%= content.id %>" method="post">
-          <input type="submit" value="<%= content.good %>" class="btn bg-danger">
+          <input type="submit" value="<%= content.good %>" class="btn bg-danger good">
 
         </form>
       </span>
