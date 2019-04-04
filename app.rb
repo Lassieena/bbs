@@ -13,6 +13,11 @@ end
 
 
 post '/new' do
+
+  if params[:user_name] == ""
+    params[:user_name] = "名無し"
+  end
+
   Contribution.create({
     name: params[:user_name],
     body: params[:body],

@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/css/count.css">
   <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
 </head>
 <body>
   <header>
@@ -13,9 +14,9 @@
   </header>
 
 <div class="container">
-  <form action="/new" method="post" enctype="multipart/form-data">
+  <form action="/new" method="post" enctype="multipart/form-data" id="commentSubmit">
     <p>名前 : <input type="text" name="user_name" class="NAME"></p>
-    <textarea name="body" cols="43" rows="5" class=""></textarea>
+    <textarea name="body" cols="43" rows="5" id="commentInput"></textarea>
   <div class="flex1">
     <p><input type="file" name="file" class="btn"></p>
     <input type="submit" value="投稿" class="btn bg-info contribution">
@@ -59,5 +60,8 @@
    <footer>
       <p>@lassieena 2019/04</p>
    </footer>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="/assets/js/main.js"></script>
 </body>
 </html>
